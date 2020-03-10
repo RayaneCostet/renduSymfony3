@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SeriesController!{% endblock %}
+
+{% block body %}
+<h1>Liste des categories</h1>
+
+{% if series is not empty %}
+
+  
+    <table class="table">
+    <thread>
+        <tr>
+            <th>Nom</th>
+            <th>Année de début</th>
+            <th>Année de fin</th>
+            <th>Nombre de saisons</th>
+            
+        </tr>
+    </thread>
+    <tbody>
+        {% for serie in series %}
+        <tr>
+        <td>
+            <a href="{{ path('edit_serie',{'id':serie.id}) }}">{{serie.nom}}</a>
+            <td>{{serie.debut}}</td>
+            <td>{{serie.fin}}</td>
+            <td>{{serie.nombresaisons}}</td>
+        </td>
+
+        
+       
+        </tr>
+    {% endfor %}
+
+{% else %}
+
+    <p>Il n'y a aucune categories</p>
+
+{% endif %}
+
+
+    {{ form (form_ajout)}}
+{% endblock %}
